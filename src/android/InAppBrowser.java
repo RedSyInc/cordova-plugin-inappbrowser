@@ -1062,7 +1062,7 @@ public class InAppBrowser extends CordovaPlugin {
      * @param obj a JSONObject contain event payload information
      * @param status the status code to return to the JavaScript environment
      */
-    private void sendUpdate(JSONObject obj, boolean keepCallback, PluginResult.Status status) {
+    public void sendUpdate(JSONObject obj, boolean keepCallback, PluginResult.Status status) {
         if (callbackContext != null) {
             PluginResult result = new PluginResult(status, obj);
             result.setKeepCallback(keepCallback);

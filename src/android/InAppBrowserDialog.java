@@ -18,6 +18,8 @@
 */
 package org.apache.cordova.inappbrowser;
 
+import org.apache.cordova.PluginResult;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -50,7 +52,14 @@ public class InAppBrowserDialog extends Dialog {
             if (this.inAppBrowser.hardwareBack() && this.inAppBrowser.canGoBack()) {
                 this.inAppBrowser.goBack();
             }  else {
-                this.inAppBrowser.closeDialog();
+                try {
+                    JSONObject obj = new JSONObject();
+                    obj.put("type", EXIT_EVENT);
+                    this.inAppBrowser.sendUpdate(obj, true, PluginResult.Status.OK);
+                } catch (JSONException ex) {
+                    Log.v(LOG_TAG, "Should never happen");
+                }
+//                 this.inAppBrowser.closeDialog();
             }
         }
     }
