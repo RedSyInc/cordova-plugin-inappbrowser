@@ -34,7 +34,9 @@ import org.json.JSONObject;
 public class InAppBrowserDialog extends Dialog {
     Context context;
     InAppBrowser inAppBrowser = null;
-
+    private static final String EXIT_EVENT = "exit";
+    protected static final String LOG_TAG = "InAppBrowser";
+    
     public InAppBrowserDialog(Context context, int theme) {
         super(context, theme);
         this.context = context;
